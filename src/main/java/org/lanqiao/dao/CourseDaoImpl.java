@@ -1,8 +1,6 @@
 package org.lanqiao.dao;
 
-import org.lanqiao.entity.Collect;
-import org.lanqiao.entity.Course;
-import org.lanqiao.entity.CourseKind;
+import org.lanqiao.entity.*;
 
 import java.util.List;
 
@@ -31,6 +29,20 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
     @Override
     public int AddCourse(String cname, String comp, int price, int kindid) {
         return executeUpdate("insert into course(course_name,company,price,kind_id) VALUES(?,?,?,?)",new Object[]{cname,comp,price,kindid});
+    }
+
+    @Override
+    public List<Course> showCourseInfoDemo(Course course){
+        List<Course> coursesList = executeQuery("select course_name,company,price,cover from course where course_id = ?",new Object[]{course.getCourse_id()});
+        return coursesList;
+    }
+    public List<Course> showCourseInfo(Cart cart) {
+        List<Course> courseList = executeQuery("SELECT * from course where course_id in (select course_id from cart where user_id = ?)", new Object[]{cart.getUser_id()});
+        return  courseList;
+    }
+    public List<Course> showCourseInfo(Order order){
+        List<Course> courseList = executeQuery("SELECT * from course where course_id = ?", new Object[]{order.getCourse_id()});
+        return  courseList;
     }
 
     //删除

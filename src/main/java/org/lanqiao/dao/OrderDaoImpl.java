@@ -22,6 +22,15 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao{
         return executeQuery("select course_name from course where course_id in" +
                 " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
     }
+    public int insertOrderInfo(Order order){
+        return executeUpdate("insert into `order`(user_id,course_id) values(?,?)",new Object[]{order.getUser_id(),order.getCourse_id()});
+    }
+    public int changeStatus(Order order){
+        return  executeUpdate("UPDATE `order` set order_status = 1 where course_id = ? and user_id = ?",new Object[]{order.getCourse_id(),order.getUser_id()});
+    }
+    public int deleteOrder(Order order){
+        return executeUpdate("delete from `order` where order_id = ?",new Object[]{order.getOrder_id()});
+    }
 }
 
 // 查询 下单时间 订单号 交易状态

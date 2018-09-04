@@ -7,6 +7,7 @@ import org.lanqiao.entity.User;
 import java.util.List;
 
 public class UserDaoImpl extends BaseDao<User> implements UserDao {
+
     public List<User> checkUsers(User user) {
         return executeQuery("select user_id,user_phone,user_name,user_pwd from user where user_phone=? and user_pwd=?", new Object[]{user.getUser_phone(), user.getUser_pwd()});
     }
@@ -31,5 +32,10 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
                 new Object[]{u.getUser_id()});
     }
 
+    @Override
+    public List<User> showUserInfo(User user){
+        List<User> userList = executeQuery("select * from user where user_id = ?",new Object[]{user.getUser_id()});
+        return userList;
+    }
 
 }

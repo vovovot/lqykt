@@ -389,7 +389,7 @@ function tjkc() {
                 }
             }
         )
-        var ui = 38;
+        var ui = 1;
         var ci =1;
         $.ajax(
             {

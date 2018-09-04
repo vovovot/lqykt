@@ -10,6 +10,7 @@ $(function () {
     shownewscount();
     searchbut();
     shownewsdialog();
+    changenewsstatus();
     $("#header-search").focus(function () {
         $(this).val("")
     }).blur(function () {
@@ -175,7 +176,7 @@ function  scrolls() {
     })
 }
 function shownewsdialog(){
-    var uid = 38;
+    var uid = 1;
     $.ajax(
         {
             url:"/ShowNewsDialogServlet",
@@ -183,7 +184,7 @@ function shownewsdialog(){
             data:{"userid":uid},
             dataType:"json",
             success:function (result) {
-                if (result[0].news_status == 0){
+                if (result[0].news_status==0){
                     layui.use('layer', function() {
                         var layer = layui.layer;
                         layer.open({
@@ -199,13 +200,29 @@ function shownewsdialog(){
                             shade:0,
                             time:10000,
                             shadeClose: false, //开启遮罩关闭
-                            content: '<div style="width: 160px;height: 120px"><a href="goods.html?booksId='+result[0].course_id+'">'+result[0].news_info+'</a></div>'
+                            content: '<div style="width: 160px;height: 120px"><a href="goods.html?booksId='+result[0].course_id+'" id="newsdialog" name="'+result[0].news_id+'">'+result[0].news_info+'</a></div>'
                         });
                     })
                 } 
             }
         }
     )
+}
+
+function changenewsstatus() {
+    $("body").on("click","#newsdialog",function () {
+        $.ajax(
+            {
+                url:"/ChangeNewsStatusServlet",
+                type:"post",
+                data:{"newsid":$(this).attr("name")},
+                dataType:"text",
+                success:function () {
+                }
+            }
+        )
+
+    })
 }
 
 

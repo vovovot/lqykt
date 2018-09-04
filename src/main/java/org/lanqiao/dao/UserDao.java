@@ -11,4 +11,5 @@ public interface UserDao {
     public List<User> select(User user);
     public int updateUser(User u);
     public List<User> selectUser(User u);
+    public List<User> showUserInfo(User user);
 }

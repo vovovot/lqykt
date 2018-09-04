@@ -1,27 +1,21 @@
 package org.lanqiao.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
-//    private int cart_id;
-    private String course_name;
+public class MyOrder implements Serializable {
     private int order_id;
     private int user_id;
     private int course_id;
     private Date order_time;
     private int order_status;
-    private int kind_id;
+    private String course_name;
+    private String company;
+    private int price;
 
-    public Order(){
+    public MyOrder(){
 
-    };
-    public Order(int user_id, int course_id, String course_name) {
-        this.user_id = user_id;
-        this.course_id = course_id;
-//        this.cart_id = cart_id;
-        this.course_name = course_name;
     }
-
 
     public int getOrder_id() {
         return order_id;
@@ -63,11 +57,27 @@ public class Order {
         this.order_status = order_status;
     }
 
-    public int getKind_id() {
-        return kind_id;
+    public String getCourse_name() {
+        return course_name;
     }
 
-    public void setKind_id(int kind_id) {
-        this.kind_id = kind_id;
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

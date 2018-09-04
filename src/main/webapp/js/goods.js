@@ -27,7 +27,7 @@ $(function(){
             user_id=arr[1];
         }
         if("user_name"==arr[0]){
-            user_id=arr[1];
+            user_name=arr[1];
         }
     }
 
@@ -70,8 +70,9 @@ $("#1").click(function () {
             }
         }
     });
+
     //加入购物车
-    $("#introduce6").click(function () {
+    $("body").on("click","#shopping",function () {
         $.ajax({
             url: "/InsertUserCrouseId",
             type: "post",
@@ -84,7 +85,15 @@ $("#1").click(function () {
             dataType: "text",
             success: function (ret) {
                 if (ret == "0"){
-                    layer.msg('存在此课程',{time:2000});
+                    layui.use('layer', function() {
+                        var layer = layui.layer;
+                        layer.msg('存在此课程', {time: 2000});
+                    })
+                }else {
+                    layui.use('layer', function() {
+                        var layer = layui.layer;
+                        layer.msg('添加课程成功', {time: 2000});
+                    })
                 }
             }
         })
