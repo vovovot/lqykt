@@ -216,28 +216,42 @@ layui.use('layer', function(){
 
     $("#right-jqr").click(function () {
         layer.open({
-            type: 1,
-            title: false,
-            resize:false,
-            area: ['450px', '550px'],
-            closeBtn: 0,
-            shadeClose: true,
-            content: '<iframe src="http://wuxiaodong.cn/tuling/" style="width: 450px;height: 550px;"></iframe>',
-        })
+        type: 1,
+        title: false,
+        resize:false,
+        area: ['450px', '550px'],
+        closeBtn: 0,
+        shadeClose: true,
+        content: '<iframe src="http://wuxiaodong.cn/tuling/" style="width: 450px;height: 550px;"></iframe>',
     })
+})
 
-
+    $("#regedit-body").hide();
     $("#weidenglu").click(function () {
         layer.open({
-            type: 1,
-            title: false,
-            resize:false,
-            area: ['500px', '500px'],
-            shadeClose: true,
-            content: '<div style="width: 500px;height: 500px;text-align: center;line-height: 500px">这里是登录界面</div>',
+            type:1,
+            closeBtn:false,
+            area:['441px','457px'],
+            title:false,
+            shadeClose:true,
+            content:$("#regedit-body"),
+            time:13000,
         })
         return false;
     })
+
+
+    // $("#weidenglu").click(function () {
+    //     layer.open({
+    //         type: 1,
+    //         title: false,
+    //         resize:false,
+    //         area: ['500px', '500px'],
+    //         shadeClose: true,
+    //         content: '<div style="width: 500px;height: 500px;text-align: center;line-height: 500px">这里是登录界面</div>',
+    //     })
+    //     return false;
+    // })
 
 
         // layer.open({

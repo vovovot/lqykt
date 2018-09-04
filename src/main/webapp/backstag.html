@@ -5,8 +5,9 @@
     <title>蓝桥云课堂</title>
     <link rel="stylesheet" href="css/base.css" type="text/css">
     <link href="bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/backtages.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="layui/css/layui.css" type="text/css" media="all">
+    <link href="css/backtages.css" rel="stylesheet" type="text/css">
+    <link href="css/delectUser.css"rel="stylesheet" type="text/css">
 
     <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
     <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
@@ -15,12 +16,13 @@
     <script src="js/jsAddress.js" type="application/javascript"></script>
     <script src="js/backtages.js" type="application/javascript"></script>
     <script src="css/backtages.css" type="application/javascript"></script>
+    <script src="js/DeletetUser.js" type="application/javascript"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
       <div class="container-fluid" style="background-color: rgba(18,21,44,0.8);height: 80px">
           <div class="navbar-header">
-              <a class="navbar-brand" href="register.html"><img src="images/regeditimage/logo1.png" width="200px" height="50px"></a>
+              <a class="navbar-brand" href="index.html"><img src="images/regeditimage/logo1.png" width="200px" height="50px"></a>
           </div>
           <div class="test1">蓝桥云课堂后台管理系统</div>
       </div>
@@ -38,7 +40,7 @@
       <div style="width: 140px;text-align: center">
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#">用户管理</a></li>
-              <li class="no1 no"><a href="#">删除用户</a></li>
+              <li class="no1 no"  id="deleteuser"><a href="#">删除用户</a></li>
               <li class="active"><a href="#">课程管理</a></li>
               <li class="no2 no"><a href="#">添加课程</a></li>
               <li class="no2 no"><a href="#">删除课程</a></li>
@@ -54,7 +56,32 @@
 
   </div>
   <div id="bodydetails">
-      <div id="details1" class="bodydetails" style="background-color: white"></div><!--删除用户  孙瑞-->
+      <div id="details1" class="bodydetails" style="background-color: white">
+          <table border="1" cellspacing="0" cellpadding="3">
+              <tr id="tab">
+                  <th>用户ID</th>
+                  <th>用户名</th>
+                  <th>电话号码</th>
+                  <th>头像</th>
+                  <th>密码</th>
+                  <th>QQ</th>
+                  <th>性别</th>
+                  <th>个性签名</th>
+                  <th>操作</th>
+              </tr>
+              <!--<tr>-->
+              <!--<td>1</td>-->
+              <!--<td>18419068758</td>-->
+              <!--<td>lanqiao18419068758</td>-->
+              <!--<td>zyh123</td>-->
+              <!--<td>sssss</td>-->
+              <!--<td>aaaaaa</td>-->
+              <!--<td>ddddddd</td>-->
+              <!--<td>qq</td>-->
+              <!--<td>删除</td>-->
+              <!--</tr>-->
+          </table>
+      </div><!--删除用户  孙瑞-->
       <div id="details2" class="bodydetails" style="background-color: white">
           <div id="tjkc">
               <!--<select id="cmbProvince" name="cmbProvince"></select>-->

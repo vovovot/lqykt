@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="css/base.css" type="text/css">
     <link rel="stylesheet" href="css/general.css" type="text/css">
+    <link rel="stylesheet" href="css/regedit.css" type="text/css">
 </head>
 <body>
 <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
 <script src="layui/layui.js" type="application/javascript"></script>
 <script src="js/general.js" type="application/javascript"></script>
+<script src="js/jquery.validate.js" type="application/javascript"></script>
+<script src="js/index1.js" type="application/javascript"></script>
 
 <div id="header">
     <div>
@@ -44,7 +47,7 @@
                         <col width="200">
                     </colgroup>
                     <tr>
-                        <td style="display: block;width: 145px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="个性签名">个性签名。。ffffffffffffffffffffff</td>
+                        <td style="display: block;width: 145px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="个性签名">个性签名。。</td>
                     </tr>
                     </tbody>
                 </table>
@@ -74,6 +77,51 @@
     <div id="erweima">
         <img src="images/gongzhonghao.jpg" id="weixin">
         <span>关注微信</span>
+    </div>
+</div>
+<div id="regedit-body">
+    <div id="regedit-title">
+        <div id="regedit-title1"></div>
+    </div>
+    <div id="regedit_middle">
+        <ul>
+            <li><img src="images/lqlogo.png"style="width: 50px" height="50"></li>
+            <li><span>手机号登录</span></li>
+        </ul>
+    </div>
+    <div id="regedit-title-right"></div>
+    <div id="regedit-title-right1">
+        <span name="ideas">使用短信验证登录</span>
+    </div>
+    <div id="regedit-form">
+        <form action="" method="post" id="regedited">
+            <div class="regedit-user">
+                <div class="regedit-user-left">
+                </div>
+                <div class="regedit_input">
+                    <input type="text" placeholder="请输入手机号" style="border: none" name="phone">
+                </div>
+            </div>
+            <div class="regedit-user1">
+                <div class="regedit-user-left1">
+                </div>
+                <div class="regedit_input">
+                    <input type="password" placeholder="请输入密码" style="border: none" name="pwd">
+                </div>
+            </div>
+            <div id="regedit_btn"><input type="button" value="登录"></div>
+            <div id="regedit-last">
+                <ul>
+                    <li><input type="checkbox" checked></li>
+                    <li><p>十天免登录</p></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>|</span></li>
+                    <li><a href="https://mob.163.com/web/passwdfind">忘记密码？</a></li>
+                </ul>
+            </div>
+            <div id="regedit-last-right">
+                <span style="color: #49AF4F" name="login">去注册 ></span>
+            </div>
+        </form>
     </div>
 </div>
 <div id="footer">
