@@ -92,7 +92,7 @@ function cancel() {
 }
 //登录状态设置
 function denglu() {
-    $("input[type='button']").click(function () {
+    $("input[value='登录']").click(function () {
         $.ajax(
             {
                 url:"/CheckUser",

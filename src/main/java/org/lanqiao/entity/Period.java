@@ -7,6 +7,17 @@ public class Period {
 //    private int duration;
     private int course_id;
     private int id;
+    public Period(){
+
+    }
+
+    public Period(int period_id, String preiod_name, String video_address, int course_id) {
+        this.period_id = period_id;
+        this.period_name = preiod_name;
+        this.video_address = video_address;
+//        this.duration = duration;
+        this.course_id = course_id;
+    }
 
     public int getPeriod_id() {
         return period_id;

@@ -1,7 +1,6 @@
 package org.lanqiao.servlet;
 
 import net.sf.json.JSONArray;
-import org.lanqiao.dao.PeriodDao;
 import org.lanqiao.dao.PeriodDaoImpl;
 import org.lanqiao.entity.Period;
 
@@ -14,22 +13,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/ShowPeriodServlet")
-public class ShowPeriodServlet extends HttpServlet {
+@WebServlet("/ShowPeriod")
+public class ShowPeriodPageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //1.获得表单数据
-        String courseId = request.getParameter("course_id");
-        int course_id = Integer.parseInt(courseId);
-        // 2.封装对象
-        PeriodDao periodDao = new PeriodDaoImpl();
-        List<Period> list = periodDao.select(course_id);
-        // 3.进行Dao操作
-        JSONArray josnarray = JSONArray.fromObject(list);
-        // 4.输出操作
-        PrintWriter out=response.getWriter();
-        out.print(josnarray);
-        out.flush();
-        out.close();
+        // 获取课程名
+        String courseId = request.getParameter("courseId");
+        if(courseId!=null && !courseId.equals("")){
+            int id = Integer.parseInt(courseId);
+            // 封装数据
+            Period p = new Period();
+            p.setCourse_id(id);
+            // dao操作
+            List<Period> list = new PeriodDaoImpl().select(p);
+            // 返回数据
+            PrintWriter pw = response.getWriter();
+            pw.print(JSONArray.fromObject(list));
+            pw.flush();
+            pw.close();
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

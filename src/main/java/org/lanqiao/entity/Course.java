@@ -13,6 +13,26 @@ public class Course {
     private int grade;
     private int kind_id;
     private int page_view;
+    public Course(){
+
+    }
+
+    public Course(String course_name){
+        this.course_name = course_name;
+    }
+
+    public Course(int course_id, String course_name, String company, int price, String cover, String synopsis, int kind_id, Date putway_time, int grade) {
+        this.course_id = course_id;
+        this.course_name = course_name;
+        this.company = company;
+        this.price = price;
+        this.cover = cover;
+        this.synopsis = synopsis;
+        this.kind_id = kind_id;
+        this.putway_time = putway_time;
+        this.grade = grade;
+    }
+
 
     public int getCourse_id() {
         return course_id;

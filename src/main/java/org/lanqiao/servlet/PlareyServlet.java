@@ -14,25 +14,24 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/ShowPeriodServlet")
-public class ShowPeriodServlet extends HttpServlet {
+@WebServlet("/PlareyServlet")
+public class PlareyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //1.获得表单数据
-        String courseId = request.getParameter("course_id");
-        int course_id = Integer.parseInt(courseId);
-        // 2.封装对象
+        String Id = request.getParameter("id");
+        int id = Integer.parseInt(Id);
+
         PeriodDao periodDao = new PeriodDaoImpl();
-        List<Period> list = periodDao.select(course_id);
-        // 3.进行Dao操作
-        JSONArray josnarray = JSONArray.fromObject(list);
-        // 4.输出操作
-        PrintWriter out=response.getWriter();
-        out.print(josnarray);
+        List<Period> list = periodDao.selectId(id);
+
+        JSONArray jsonArray = JSONArray.fromObject(list);
+
+        PrintWriter out = response.getWriter();
+        out.print(jsonArray);
         out.flush();
         out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+doPost(request,response);
     }
 }

@@ -20,4 +20,8 @@ public interface CourseDao{
     // 查询三级标题课程
     public List<Course> selectSignle(CourseKind ck, int pageBegin, int pageSize) ;
 
+    //删除
+    public int delete(int id);
+    public List<Course> selectid(Course c);
+
 }

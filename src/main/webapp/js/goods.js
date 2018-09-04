@@ -155,7 +155,7 @@ function Show() {
             $('.comment').remove();
             for (var i = 0; i< result.length-1; i++){
                 var node='                        <div class="comment">\n' +
-                    '                            <div class="imgdiv"><img class="imgcss"  src="images/aaa.jpg"/></div>\n' +
+                    '                            <div class="imgdiv"><img class="imgcss"  src="images/content_head"/></div>\n' +
                     '                            <div class="conmment_details">\n' +
                     '                                <span class="comment_name">'+result[i].user_name+'</span>  &nbsp&nbsp&nbsp&nbsp<span>'+result[i].content_time+'</span>\n' +
                     '                                <div class="comment_content" > '+result[i].content+'</div>\n' +

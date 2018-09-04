@@ -64,4 +64,15 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
                 new Object[]{ck.getKind_name(), pageBegin, pageSize});
     }
 
+    //删除
+    public int delete(int id) {
+        return executeUpdate("delete course where course_id = ?", new Object[]{id});
+    }
+    //查询
+    @Override
+    public List<Course> selectid(Course course) {
+        List<Course> courseList = executeQuery("select * from course where course_id = ?", new Object[]{course.getCourse_id()});
+        return courseList;
+    }
+
 }
