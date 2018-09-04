@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="layui/css/layui.css" type="text/css" media="all">
     <link href="css/backtages.css" rel="stylesheet" type="text/css">
     <link href="css/delectUser.css"rel="stylesheet" type="text/css">
+    <link href="css/delCourse.css" rel="stylesheet" type="text/css">
+    <link href="css/delPeriod.css" rel="stylesheet" type="text/css">
 
     <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
     <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
@@ -132,7 +134,20 @@
               </form>
           </div>
       </div><!--添加课程  曹-->
-      <div id="details3" class="bodydetails" style="background-color: blue"></div><!--删除课程  李健-->
+      <div id="details3" class="bodydetails" style="background-color: white">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">课程编号</li>
+                  <li class="info2">课程名</li>
+                  <li class="info2">课程价格</li>
+                  <li class="info2">授课机构</li>
+                  <li class="info2">课程类别</li>
+                  <li class="info2">上架时间</li>
+                  <li class="info2">评分</li>
+                  <li class="info3">浏览量</li>
+              </ul>
+          </div>
+      </div><!--删除课程  李健-->
       <div id="details4" class="bodydetails" style="background-color: white">
           <form id="tjksform">
               <div class="layui-form-item">
@@ -166,7 +181,28 @@
               </div>
           </form>
       </div><!--添加课时  曹-->
-      <div id="details5" class="bodydetails" style="background-color: brown"></div><!--删除课时  李健-->
+      <div id="details5" class="bodydetails" style="background-color: white">
+          <span class="inputHead">输入要查询的课程id：</span>
+          <input type="text" name="courseName" class="inputTxt">
+          <input type="button" name="searchBtn" value="查询">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">课时编号</li>
+                  <li class="info2">课时名</li>
+                  <li class="info2">视频地址</li>
+                  <li class="info2">课程编号</li>
+              </ul>
+          </div>
+          <div class="courseInfo course">
+              <ul>
+                  <li class="info1 info2">课时编号</li>
+                  <li class="info2">课时名</li>
+                  <li class="info2">视频地址</li>
+                  <li class="info3">课程编号</li>
+              </ul>
+              <div class="deBtnP"></div>
+          </div>
+      </div><!--删除课时  李健-->
       <div id="details6" class="bodydetails" style="background-color: gold"></div><!--统计分析  郭-->
       <div id="details7" class="bodydetails" style="background-color: green"></div><!--订单分析  郭-->
       <div id="details8" class="bodydetails" style="background-color: hotpink"></div><!--查看订单  孙瑞-->

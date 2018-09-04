@@ -4,7 +4,7 @@ public class Period {
     private int period_id;
     private String period_name;
     private String video_address;
-    private int duration;
+//    private int duration;
     private int course_id;
     private int id;
 
@@ -31,14 +31,14 @@ public class Period {
     public void setVideo_address(String video_address) {
         this.video_address = video_address;
     }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+//
+//    public int getDuration() {
+//        return duration;
+//    }
+//
+//    public void setDuration(int duration) {
+//        this.duration = duration;
+//    }
 
     public int getCourse_id() {
         return course_id;

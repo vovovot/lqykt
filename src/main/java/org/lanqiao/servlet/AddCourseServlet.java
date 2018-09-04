@@ -2,7 +2,6 @@ package org.lanqiao.servlet;
 
 import org.lanqiao.dao.CourseDao;
 import org.lanqiao.dao.CourseDaoImpl;
-import org.lanqiao.entity.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet("/AddCourseServlet")
 public class AddCourseServlet extends HttpServlet {

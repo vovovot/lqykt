@@ -2,11 +2,8 @@ package org.lanqiao.servlet;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JsonConfig;
-import org.lanqiao.dao.CourseDao;
-import org.lanqiao.dao.CourseDaoImpl;
 import org.lanqiao.dao.NewsDao;
 import org.lanqiao.dao.NewsDaoImpl;
-import org.lanqiao.entity.Course;
 import org.lanqiao.entity.News;
 import org.lanqiao.util.JsonDateValueProcessor;
 

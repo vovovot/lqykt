@@ -14,4 +14,11 @@ public class CourseKindDaoImpl extends  BaseDao<CourseKind> implements CourseKin
     public List<CourseKind> CheckCourseId(String kindname) {
         return executeQuery("select * from coursekind where kind_name = '"+kindname+"'");
     }
+
+    @Override
+    public List<CourseKind> select(CourseKind ck) {
+        return executeQuery("select kind_name from coursekind \n" +
+                        "    where pid = (select kind_id from coursekind where kind_name = ?)",
+                new Object[]{ck.getKind_name()});
+    }
 }

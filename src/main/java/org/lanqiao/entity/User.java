@@ -9,6 +9,26 @@ public class User {
     private  String user_picaddress;
     private  String user_signature;
     private  String user_qq;
+    public User()
+    {
+
+    }
+    public User(int user_id)
+    {
+        this.user_id=user_id;
+    }
+    public User(String user_phone,String user_pwd)
+    {
+        this.user_phone=user_phone;
+        this.user_pwd=user_pwd;
+    }
+    public User(int user_id,String user_phone,String user_pwd,String user_name)
+    {
+        this.user_id=user_id;
+        this.user_phone=user_phone;
+        this.user_pwd=user_pwd;
+        this.user_name=user_name;
+    }
 
     public int getUser_id() {
         return user_id;

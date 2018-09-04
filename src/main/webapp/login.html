@@ -9,10 +9,16 @@
 <body>
 <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
 <script src="js/jquery.validate.js" type="application/javascript"></script>
-<script src="js/layer.js" type="application/javascript"></script>
+<!--<script src="js/layer.js" type="application/javascript"></script>-->
 <script src="layui/layui.js" type="application/javascript"></script>
 <script src="js/login.js" type="application/javascript"></script>
 <script>
+    jQuery.validator.addMethod("regex", //addMethod第1个参数:方法名称
+        function (value, element, params) {//addMethod第2个参数:验证方法，
+            //验证方法参数（被验证元素的值，被验证元素，参数）
+            var exp = new RegExp(params);//实例化正则对象，参数为用户传入的正则表达式
+            return exp.test(value);//测试是否匹配
+        }, "格式错误");
     $(function () {
         console.log($("input[name='userphone']").val());
         $("input[name='verify']").click(function () {
@@ -24,11 +30,14 @@
                     dataType:"text",
                     success:function(ret) {
                         {
-                            layer.msg("验证码已发送！",{time:1000});
+                            layui.use('layer', function() {
+                                var layer = layui.layer;
+                                layer.msg("验证码已发送！", {time: 1000});
+                            });
                             var msg=$("input[name='node']").val();
                             if(msg==ret)
                             {
-                                layer.msg("验证成功！",{time:1000});
+                                alert("验证成功！", {time: 1000});
                             }
                         }
 
@@ -37,16 +46,8 @@
             )
 
         })
-    })
-</script>
-<script>
-    jQuery.validator.addMethod("regex", //addMethod第1个参数:方法名称
-        function (value, element, params) {//addMethod第2个参数:验证方法，
-            //验证方法参数（被验证元素的值，被验证元素，参数）
-            var exp = new RegExp(params);//实例化正则对象，参数为用户传入的正则表达式
-            return exp.test(value);//测试是否匹配
-        }, "格式错误");
-    $(function () {
+
+
         $("#loginnned").validate(
             {
                 onsubmit:true,//是否在提交时进行验证
@@ -95,24 +96,27 @@
                     },
                 submitHandler:function(form)
                 {
-                        $.ajax(
-                            {
-                                url:"/AddUser",
-                                type:"post",
-                                dataType:"text",
-                                data:{"userphone":$("input[name='userphone']").val(),
-                                    "userpwd":$("input[name='userpwd']").val()
-                                },
-                                success:function (ret) {
-                                    if(ret=="1")
-                                    {
-                                        layer.msg('注册成功',{time:1000});
-                                        window.location.reload();
-                                    }else{
-                                        layer.msg('此账号已存在！',{time:1000});
-                                    }
+                    $.ajax(
+                        {
+                            url:"/AddUser",
+                            type:"post",
+                            dataType:"text",
+                            data:{"userphone":$("input[name='userphone']").val(),
+                                "userpwd":$("input[name='userpwd']").val()
+                            },
+                            success:function (ret) {
+                                if(ret==1)
+                                {
+                                    alert('注册成功', {time: 1000});
+                                    window.location.reload();
+                                }else{
+                                    layui.use('layer', function() {
+                                        var layer = layui.layer;
+                                        layer.msg('此账号已存在！', {time: 1000});
+                                    });
                                 }
-                            })
+                            }
+                        })
 
                 },
                 invalidHandler:function (form,validator) {

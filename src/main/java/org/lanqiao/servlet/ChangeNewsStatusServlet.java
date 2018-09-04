@@ -2,7 +2,6 @@ package org.lanqiao.servlet;
 
 import org.lanqiao.dao.NewsDao;
 import org.lanqiao.dao.NewsDaoImpl;
-import org.lanqiao.entity.News;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

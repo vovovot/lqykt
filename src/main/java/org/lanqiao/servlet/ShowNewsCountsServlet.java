@@ -1,9 +1,7 @@
 package org.lanqiao.servlet;
 
-import net.sf.json.JSONArray;
 import org.lanqiao.dao.NewsDao;
 import org.lanqiao.dao.NewsDaoImpl;
-import org.lanqiao.entity.News;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet("/ShowNewsCountsServlet")
 public class ShowNewsCountsServlet extends HttpServlet {

@@ -9,6 +9,138 @@ $(function () {
 
         //各种基于事件的操作，下面会有进一步介绍
     });
+
+    // 查询所有课程并展示
+    showCourse();
+
+    // 删除课程信息
+    $("body").delegate(".delBtn", "click", function () {
+        // 获取课程名
+        var courseId = $(this).parent().children("ul").children("li").eq(0).text();
+        $.ajax({
+            url: "http://localhost:8080/DelCourse",
+            type: "post",
+            data: {
+                "courseId": courseId
+            },
+            dataType: "text",
+            success: function (msg) {
+                if(msg == 1){
+                    //移除类名
+                    $(this).parent().remove();
+                    location.reload();
+                    showCourse();
+                    alert("success");
+                }else{
+                    alert("error");
+                }
+            }
+        })
+    })
+    // 展示所有课程
+    function showCourse() {
+        var arr = ["办公效率", "职场发展", "职业岗位", "人工智能", "IT&互联网", "语言留学", "职场之外"];
+        for(var i=0; i<arr.length; i++){
+            // 课程显示
+            $.ajax({
+                url: "http://localhost:8080/ShowAllCourse",
+                method: "post",
+                data: {
+                    "two_name": arr[i]
+                },
+                dataType: "json",
+                success: function (list) {
+                    $.each(list, function (key, value) {
+                        var $course = createCourse(value);
+                        $("#details3").append($course);
+                    })
+                },
+                error: function (xml) {
+                    console.log(xml);
+                }
+            })
+        }
+    }
+
+    // 展示课程信息
+    function createCourse(obj) {
+        var $course = $('<div class="courseInfo course">\n' +
+            '              <ul>\n' +
+            '                  <li class="info1 info2">'+obj.course_id+'</li>\n' +
+            '                  <li class="info2">'+obj.course_name+'</li>\n' +
+            '                  <li class="info2">￥'+obj.price+'</li>\n' +
+            '                  <li class="info2">'+obj.company+'</li>\n' +
+            '                  <li class="info2">'+obj.kind_id+'</li>\n' +
+            '                  <li class="info2">'+obj.putway_time+'</li>\n' +
+            '                  <li class="info2">'+obj.grade+'</li>\n' +
+            '                  <li class="info3">'+obj.page_view+'人</li>\n' +
+            '              </ul>\n' +
+            '              <div class="delBtn"></div>\n' +
+            '          </div>');
+        return $course;
+    }
+
+    // 展示要查询的课程信息
+    $("input[name='searchBtn']").click(function () {
+        var courseId = $(".inputTxt").val();
+        // 课时显示
+        $.ajax({
+            url: "http://localhost:8080/ShowPeriod",
+            method: "post",
+            data: {
+                "courseId": courseId
+            },
+            dataType: "json",
+            success: function (list) {
+                $.each(list, function (key, value) {
+                    var $period = createPeriod(value);
+                    $("#details5").append($period);
+                })
+            },
+            error: function (xml) {
+                console.log(xml);
+            }
+        })
+    })
+
+    // 删除课程信息
+    $("body").delegate(".deBtnP", "click", function () {
+        var id = $(this).parent().children("ul").children("li").eq(0).text();
+        $.ajax({
+            url: "http://localhost:8080/DelPeriod",
+            type: "post",
+            data: {
+                "id": id
+            },
+            dataType: "text",
+            success: function (msg) {
+                console.log(msg);
+                if(msg == 1){
+                    //移除类名
+                    $(this).parent().remove();
+                    location.reload();
+                    alert("success");
+                }else{
+                    alert("error");
+                }
+            }
+        })
+    })
+
+    // 展示课时信息
+    function createPeriod(obj) {
+        var $period = $('<div class="courseInfo course">\n' +
+            '              <ul>\n' +
+            '                  <li class="info1 info2">'+obj.id+'</li>\n' +
+            '                  <li class="info2">'+obj.period_name+'</li>\n' +
+            '                  <li class="info2">'+obj.video_address+'</li>\n' +
+            '                  <li class="info3">'+obj.course_id+'</li>\n' +
+            '              </ul>\n' +
+            '              <div class="deBtnP"></div>\n' +
+            '          </div>');
+        return $period;
+    }
+
 })
 // jQuery.validator.addMethod("regex", //addMethod第1个参数:方法名称
 //     function (value, element, params) {//addMethod第2个参数:验证方法，
