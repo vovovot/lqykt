@@ -1,5 +1,6 @@
 package org.lanqiao.dao;
 
+import org.lanqiao.entity.Collect;
 import org.lanqiao.entity.Course;
 import org.lanqiao.entity.CourseKind;
 
@@ -23,5 +24,7 @@ public interface CourseDao{
     //删除
     public int delete(int id);
     public List<Course> selectid(Course c);
+
+    public List<Course> selectCourse(Collect collect);
 
 }

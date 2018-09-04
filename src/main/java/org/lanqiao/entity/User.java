@@ -8,7 +8,7 @@ public class User {
     private  String user_sex;
     private  String user_picaddress;
     private  String user_signature;
-    private  String user_qq;
+    private  int user_qq;
     public User()
     {
 
@@ -28,6 +28,15 @@ public class User {
         this.user_phone=user_phone;
         this.user_pwd=user_pwd;
         this.user_name=user_name;
+    }
+
+    public User(int user_id, String user_name, int user_qq, String user_sex, String user_picaddress, String user_signature) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.user_qq = user_qq;
+        this.user_sex = user_sex;
+        this.user_picaddress = user_picaddress;
+        this.user_signature = user_signature;
     }
 
     public int getUser_id() {
@@ -86,11 +95,11 @@ public class User {
         this.user_signature = user_signature;
     }
 
-    public String getUser_qq() {
+    public int getUser_qq() {
         return user_qq;
     }
 
-    public void setUser_qq(String user_qq) {
+    public void setUser_qq(int user_qq) {
         this.user_qq = user_qq;
     }
 }

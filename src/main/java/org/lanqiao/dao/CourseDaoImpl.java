@@ -1,5 +1,6 @@
 package org.lanqiao.dao;
 
+import org.lanqiao.entity.Collect;
 import org.lanqiao.entity.Course;
 import org.lanqiao.entity.CourseKind;
 
@@ -74,5 +75,12 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
         List<Course> courseList = executeQuery("select * from course where course_id = ?", new Object[]{course.getCourse_id()});
         return courseList;
     }
+
+    @Override
+    public List<Course> selectCourse(Collect collect){
+        return executeQuery("select * from course where course_id in(select course_id from collect where user_id =?) ",
+                new Object[]{collect.getUser_id()});
+    }
+
 
 }

@@ -17,4 +17,19 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     {
         return executeQuery("select user_phone from user where user_phone=?",new Object[]{user.getUser_phone()});
     }
+
+    @Override
+    public int updateUser(User u) {
+        return executeUpdate("update user set user_name =? ,user_qq=?,user_sex =? ,user_signature=? where user_id=?",
+                new Object[]{u.getUser_name(),u.getUser_qq(),u.getUser_sex(),u.getUser_signature(),u.getUser_id()});
+
+    }
+
+    @Override
+    public List<User> selectUser(User u) {
+        return  executeQuery("select user_name from user where user_id =?",
+                new Object[]{u.getUser_id()});
+    }
+
+
 }

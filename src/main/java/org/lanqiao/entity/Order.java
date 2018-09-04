@@ -3,12 +3,23 @@ package org.lanqiao.entity;
 import java.util.Date;
 
 public class Order {
+//    private int cart_id;
+    private String course_name;
     private int order_id;
     private int user_id;
     private int course_id;
     private Date order_time;
     private String order_status;
     private int kind_id;
+
+    public Order(){};
+    public Order(int user_id, int course_id, String course_name) {
+        this.user_id = user_id;
+        this.course_id = course_id;
+//        this.cart_id = cart_id;
+        this.course_name = course_name;
+    }
+
 
     public int getOrder_id() {
         return order_id;

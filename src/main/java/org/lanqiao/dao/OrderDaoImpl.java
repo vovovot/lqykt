@@ -1,6 +1,7 @@
 package org.lanqiao.dao;
 
 import org.lanqiao.entity.Order;
+import org.lanqiao.entity.User;
 
 import java.util.List;
 
@@ -14,6 +15,12 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao{
         return executeQuery("select order_id, user_id, course_id, o" +
                         "from course where course_name like '%?%'",
                 new Object[]{key});
+    }
+
+    @Override
+    public List<Order> showCourseName(User user) {
+        return executeQuery("select course_name from course where course_id in" +
+                " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
     }
 }
 
