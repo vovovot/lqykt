@@ -16,7 +16,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
     }
     public List<User> select(User user)
     {
-        return executeQuery("select user_phone from user where user_phone=?",new Object[]{user.getUser_phone()});
+        return executeQuery("select * from user where user_phone=?",new Object[]{user.getUser_phone()});
     }
 
     @Override

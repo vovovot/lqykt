@@ -137,6 +137,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+#yidenglu{
+    display: block;
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 #header-icon{
     width: 35px;
     height: 36px;

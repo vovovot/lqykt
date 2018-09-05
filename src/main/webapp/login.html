@@ -33,11 +33,13 @@
                             layui.use('layer', function() {
                                 var layer = layui.layer;
                                 layer.msg("验证码已发送！", {time: 1000});
-                            });
+                            })
                             var msg=$("input[name='node']").val();
                             if(msg==ret)
-                            {
-                                alert("验证成功！", {time: 1000});
+                            {layui.use('layer', function() {
+                                var layer = layui.layer;
+                                layer.msg("验证成功！", {time: 1000});
+                            })
                             }
                         }
 
@@ -106,14 +108,16 @@
                             },
                             success:function (ret) {
                                 if(ret==1)
-                                {
-                                    alert('注册成功', {time: 1000});
+                                {layui.use('layer', function() {
+                                    var layer = layui.layer;
+                                    layer.msg('注册成功', {time: 1000});
+                                })
                                     window.location.reload();
                                 }else{
                                     layui.use('layer', function() {
                                         var layer = layui.layer;
                                         layer.msg('此账号已存在！', {time: 1000});
-                                    });
+                                    })
                                 }
                             }
                         })

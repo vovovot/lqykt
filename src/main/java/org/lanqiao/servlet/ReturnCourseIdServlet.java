@@ -1,10 +1,10 @@
 package org.lanqiao.servlet;
 
-
+import com.google.gson.JsonArray;
 import net.sf.json.JSONArray;
-import org.lanqiao.dao.UserDao;
-import org.lanqiao.dao.UserDaoImpl;
-import org.lanqiao.entity.User;
+import org.lanqiao.dao.CourseDao;
+import org.lanqiao.dao.CourseDaoImpl;
+import org.lanqiao.entity.Course;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,24 +15,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet("/NodeServlet")
-public class NodeServlet extends HttpServlet {
+@WebServlet("/ReturnCourseIdServlet")
+public class ReturnCourseIdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String phone=request.getParameter("phone");
-        User user=new User();
-        user.setUser_phone(phone);
-        UserDao userDao=new UserDaoImpl();
-        List<User> list=userDao.select(user);
-        JSONArray json1= JSONArray.fromObject(list);
+        CourseDao courseDao = new CourseDaoImpl();
+        List<Course> list = courseDao.ReturnCourseId();
+        JSONArray josnarray = JSONArray.fromObject(list);
         PrintWriter out=response.getWriter();
-        if(json1.size()>0)
-        {
-            out.print(json1);
-        }
-        else
-        {
-            out.print(0);
-        }
+        out.print(josnarray);
         out.flush();
         out.close();
     }

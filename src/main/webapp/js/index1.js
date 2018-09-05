@@ -7,6 +7,41 @@ $(function () {
     form2();
     denglu();
     cancel();
+
+    //获取cookie字符串
+    var strCookie = document.cookie;
+    //将多cookie切割为多个名/值对
+    var arrCookie = strCookie.split("; ");
+    var user_name;
+    //遍历cookie数组，处理每个cookie对
+    for (var i = 0; i < arrCookie.length; i++) {
+        var arr = arrCookie[i].split("=");
+        //找到名称为userId的cookie，并返回它的值
+        if ("user_name" == arr[0]) {
+            user_name = arr[1];
+            break;
+        }
+    }
+    $("#yidenglu").hide();
+    if (user_name!=null){
+        $("#weidenglu").hide();
+        $("#yidenglu").text(user_name);
+        $("#yidenglu").attr("title",user_name);
+        $("#yidenglu").show();
+    }else {
+        $("#news").attr("href","#")
+        $("#news").click(function () {
+            layer.msg("请先登录！！")
+        });
+        $("#wdxx").attr("href","#")
+        $("#wdxx").click(function () {
+            layer.msg("请先登录！！")
+        });
+        $("#gwc").attr("href","#")
+        $("#gwc").click(function () {
+            layer.msg("请先登录！！")
+        })
+    }
 })
 function chenginput() {
     $("input[name='phone']").focus(function () {
@@ -110,8 +145,8 @@ function denglu() {
                         var time=new Date();
                         time.setTime(time.getDate()+1);
                         document.cookie="expires="+time.toGMTString();
-                        $("#weidenglu").text(name);
-                        $("#weidenglu").attr("title",name);
+
+
 
                     }
                     else{

@@ -1,3 +1,18 @@
+//获取cookie字符串
+var strCookie=document.cookie;
+//将多cookie切割为多个名/值对
+var arrCookie=strCookie.split("; ");
+var user_id;
+//遍历cookie数组，处理每个cookie对
+for(var i=0;i<arrCookie.length;i++){
+    var arr=arrCookie[i].split("=");
+    //找到名称为userId的cookie，并返回它的值
+    if("user_id"==arr[0]){
+        user_id=arr[1];
+        break;
+    }
+}
+
 $(function () {
     qiehuan();
     changenewsstatus();
@@ -34,12 +49,11 @@ var rsCount = 0;
 var pageSize = 5;
 var maxPage = 0;
 function shownewsinfo() {
-    var userid = 1;
     $.ajax(
         {
             url:"/ShowNewsInfoServlet",
             type:"post",
-            data:{"userid":userid,"num":num},
+            data:{"userid":user_id,"num":num},
             dataType:"json",
             success:function (result) {
                 if (result.length == 0){

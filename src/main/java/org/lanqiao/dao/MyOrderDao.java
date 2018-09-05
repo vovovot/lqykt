@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface MyOrderDao {
     public List<MyOrder> showMyOrder(Order order);
+    public List<MyOrder> showUserOrder();
 }

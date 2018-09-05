@@ -1,3 +1,7 @@
+a:not([href]):not([tabindex]) {
+    color: black;
+    text-decoration: none;
+}
 body{
     width: 100%;
     padding: 0;

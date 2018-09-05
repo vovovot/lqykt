@@ -27,8 +27,13 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
     }
 
     @Override
-    public int AddCourse(String cname, String comp, int price, int kindid) {
-        return executeUpdate("insert into course(course_name,company,price,kind_id) VALUES(?,?,?,?)",new Object[]{cname,comp,price,kindid});
+    public List<Course> ReturnCourseId() {
+        return executeQuery("select * from course order by putway_time desc");
+    }
+
+    @Override
+    public int AddCourse(String cname, String comp, int price, int kindid,String synopsis,String cover) {
+        return executeUpdate("insert into course(course_name,company,price,kind_id,synopsis,cover) VALUES(?,?,?,?,?,?)",new Object[]{cname,comp,price,kindid,synopsis,cover});
     }
 
     @Override

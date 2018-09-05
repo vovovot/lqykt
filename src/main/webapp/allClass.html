@@ -71,20 +71,21 @@
     <div>
         <div id="logo"><a href="index.html" target="_self"><img src="images/logo.png"></a></div>
         <div id="header-guide">
-            <a href="" target="_blank"><div class="header-guide">精选好课</div></a>
-            <a href="" target="_blank"><div class="header-guide">免费好课</div></a>
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">精选好课</div></a>
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">免费好课</div></a>
             <a href="" target="_blank"><div class="header-guide">分享网站</div></a>
         </div>
         <input type="text" id="header-search" value="搜索课程...">
         <a href="" target="_blank" id="searchbutton"><img src="images/header-search.png" id="header-icon"></a>
         <div id="header-options">
-            <a href="" target="_blank">我的学习</a>
+            <a href="myStudy.html" target="_self" id="wdxx">我的学习</a>
             <i id="news-count">0</i>
-            <a href="news.html" target="_blank">消息</a>
+            <a href="news.html" target="_self" id="news">消息</a>
             <i id="cart-count">0</i>
-            <a href="" target="_blank">购物车</a>
+            <a href="cart.html" target="_self" id="gwc">购物车</a>
             <span>|</span>
             <a href="" id="weidenglu" title="登录/注册">登录/注册</a>
+            <a href="userMain.html" id="yidenglu">..</a>
             <div id="touxiang"><img src="images/small.jpg"></div>
         </div>
         <div id="touxiang-details">
@@ -101,7 +102,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <button class="layui-btn layui-btn-primary">我的订单</button>
+                <button class="layui-btn layui-btn-primary" onclick="window.location.href='myorder.html'">我的订单</button>
                 <br><br>
                 <button class="layui-btn layui-btn-danger" id="calcel">注销</button>
             </div>

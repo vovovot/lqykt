@@ -17,9 +17,11 @@ public class AddCourseServlet extends HttpServlet {
         String cname = request.getParameter("coursename");
         String comp = request.getParameter("company");
         int price = Integer.parseInt(request.getParameter("price"));
+        String synopsis = request.getParameter("synopsis");
         int kindid = Integer.parseInt(request.getParameter("kindid"));
+        String cover = request.getParameter("cover");
         CourseDao courseDao = new CourseDaoImpl();
-        int ret = courseDao.AddCourse(cname,comp,price,kindid);
+        int ret = courseDao.AddCourse(cname,comp,price,kindid,synopsis,cover);
         PrintWriter out=response.getWriter();
         out.print(ret);
         out.flush();

@@ -1,3 +1,22 @@
+//获取cookie字符串
+var strCookie=document.cookie;
+//将多cookie切割为多个名/值对
+var arrCookie=strCookie.split("; ");
+var user_id;
+//遍历cookie数组，处理每个cookie对
+for(var i=0;i<arrCookie.length;i++){
+    var arr=arrCookie[i].split("=");
+    //找到名称为userId的cookie，并返回它的值
+    if("user_id"==arr[0]){
+        user_id=arr[1];
+        break;
+    }
+}
+// if ($("#weidenglu").text() == "登录/注册") {
+//     $(this).attr("href","")
+// }else {
+//     $(this).attr("href","userMain.html")
+// }
 $(function () {
     righthide();
     backtotop();
@@ -58,12 +77,11 @@ function searchbut(){
 }
 
 function shownewscount(){
-    var userid = 1;//////cookie
     $.ajax(
         {
             url:"/ShowNewsCountsServlet",
             type:"post",
-            data:{"userid":userid},
+            data:{"userid":user_id},
             dataType:"text",
             success:function (result) {
                 $("#news-count").text(result);
@@ -71,6 +89,19 @@ function shownewscount(){
             }
         }
     )
+
+    $.ajax({
+        url:"/CartCourseNum",
+        type: "post",
+        data: {
+            "user_id": user_id
+        },
+        dataType: "text",
+        success: function (ret) {
+            $("#cart-count").text(ret);
+            newscount();
+        }
+    })
 }
 
 function righthide() {
@@ -176,12 +207,11 @@ function  scrolls() {
     })
 }
 function shownewsdialog(){
-    var uid = 1;
     $.ajax(
         {
             url:"/ShowNewsDialogServlet",
             type:"post",
-            data:{"userid":uid},
+            data:{"userid":user_id},
             dataType:"json",
             success:function (result) {
                 if (result[0].news_status==0){

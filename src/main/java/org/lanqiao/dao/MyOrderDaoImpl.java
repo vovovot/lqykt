@@ -10,4 +10,9 @@ public class MyOrderDaoImpl extends BaseDao<MyOrder> implements MyOrderDao{
         List<MyOrder> myOrderList = executeQuery("SELECT * FROM `order` ord INNER JOIN course cr ON ord.course_id=cr.course_id where user_id = ?",new Object[]{order.getUser_id()});
         return  myOrderList;
     }
+
+    public List<MyOrder> showUserOrder(){
+        List<MyOrder> myOrderList = executeQuery("SELECT * FROM `order` ord INNER JOIN course cr ON ord.course_id=cr.course_id ");
+        return  myOrderList;
+    }
 }

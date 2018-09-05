@@ -9,10 +9,11 @@ public interface CourseDao{
     public List<Course> ShowFreeCourse();
     public List<Course> ShowNewCourse();
     public List<Course> ShowPrompt(String str);
+    public List<Course> ReturnCourseId();
     public List<Course> showCourseInfoDemo(Course course);
     public List<Course> showCourseInfo(Cart cart);
     public List<Course> showCourseInfo(Order order);
-    public int AddCourse(String cname,String comp,int price,int kindid);
+    public int AddCourse(String cname,String comp,int price,int kindid,String synopsis,String cover);
     //删除
     public int delete(Course c);
     //查询二级标题课程

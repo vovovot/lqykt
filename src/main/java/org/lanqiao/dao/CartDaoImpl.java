@@ -24,5 +24,10 @@ public class CartDaoImpl extends BaseDao<Cart> implements CartDao {
         return executeUpdate("delete from cart where user_id=? and course_id=?",new Object[]{cart.getUser_id(),cart.getCourse_id()});
     }
 
+    public int cartCourseNum(Cart cart){
+        int userid = cart.getUser_id();
+        return getRecordCount("select COUNT(course_id)from cart where user_id = "+userid);
+    }
+
 
 }

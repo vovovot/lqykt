@@ -1,3 +1,19 @@
+
+//获取cookie字符串
+var strCookie=document.cookie;
+//将多cookie切割为多个名/值对
+var arrCookie=strCookie.split("; ");
+var user_id;
+//遍历cookie数组，处理每个cookie对
+for(var i=0;i<arrCookie.length;i++){
+    var arr=arrCookie[i].split("=");
+    //找到名称为userId的cookie，并返回它的值
+    if("user_id"==arr[0]){
+        user_id=arr[1];
+        break;
+    }
+}
+var cid;
 $(function () {
     click();
     //biaodanyanzheng1();
@@ -378,30 +394,43 @@ function tjkc() {
                 data:{"coursename":$("input[name='coursename']").val(),
                     "company":$("input[name='company']").val(),
                     "price":$("input[name='price']").val(),
+                    "synopsis":$("input[name='synopsis']").val(),
+                    "cover":"E:/idea/IntelliJ IDEA 2018.2/lqykt/target/lqykt/upload/classImg1.png",
                     "kindid":kid,
                 },
                 success:function (ret) {
                     if (ret == 1){
-                        layer.alert("添加课时成功！")
-                    } else {
-                        layer.alert("添加课时失败！")
-                    }
-                }
-            }
-        )
-        var ui = 1;
-        var ci =1;
-        $.ajax(
-            {
-                url:"/AddNewsServlet",
-                type:"post",
-                dataType:"text",
-                async:false,
-                data:{"userid":ui,
-                    "courseid":ci,
-                    "newsinfo":"【工作型PPT应该这样做】课程更新了！"},
-                success:function () {
+                        $.ajax(
+                            {
+                                url:"/ReturnCourseIdServlet",
+                                type:"post",
+                                dataType:"json",
+                                async:false,
+                                success:function (result) {
+                                    layer.alert("添加课程成功！您的课程ID为："+result[0].course_id+",请牢记！！");
+                                    cid = result[0].course_id;
+                                }
 
+                            }
+                        )
+
+                        $.ajax(
+                            {
+                                url:"/AddNewsServlet",
+                                type:"post",
+                                dataType:"text",
+                                async:false,
+                                data:{"userid":user_id,
+                                    "courseid":cid,
+                                    "newsinfo":"【工作型PPT应该这样做】课程更新了！"},
+                                success:function () {
+
+                                }
+                            }
+                        )
+                    } else {
+                        layer.alert("添加课程失败！")
+                    }
                 }
             }
         )

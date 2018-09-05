@@ -19,6 +19,70 @@
     <script src="js/backtages.js" type="application/javascript"></script>
     <script src="css/backtages.css" type="application/javascript"></script>
     <script src="js/DeletetUser.js" type="application/javascript"></script>
+    <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+    <script>
+        $(function () {
+            $('.fileupload').fileupload({
+                url: "/uploadFile",
+                Type: 'POST',//请求方式 ，可以选择POST，PUT或者PATCH,默认POST
+                dataType: 'json',//服务器返回的数据类型
+                // singleFileUploads: false,//不设置多个文件循环提交，设置后一起提交
+
+                //add函数为选择文件后执行的操作
+                add: function (e, data) {
+                    //获取图片路径并显示预览
+                    var url = getUrl(data.files[0]);
+                    var $img = $("<img>").attr("src", url).css("width","50px")
+                    $("#image").append($img);
+                    //绑定上传提交事件
+                    $("#shangchuan").click(function () {
+                        data.submit();
+                    });
+                },
+                //done函数为上传成功后执行的操作
+                done: function (e, ret) {
+                    if (ret.result.errno == 0) {
+                        // 显示上传成功，并循环输出上传内容预览。
+                        $(".preview").append("<div>上传成功:" + ret.result.data + "</div>");
+                        $.each(ret.result.data, function (index, fileSrc) {
+                            $(".preview").append("<div style='margin-top:10px;'><embed src=" +
+                                fileSrc + " allowscriptaccess='always' " +
+                                "allowfullscreen='true' wmode='opaque' width='280' height='200'>" +
+                                "</embed></div>");
+                        });
+                    } else {
+                        alert("上传失败");
+                    }
+
+                },
+
+                //此方法控制进度条
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                },
+
+                //dropZone: $('#dropzone') //此为拖拽文件控制，暂未开发。
+            });
+        });
+        //获取图片地址
+        function getUrl(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+    </script>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -108,6 +172,12 @@
                           <input type="text" name="price"  placeholder="￥--整数" autocomplete="off" class="layui-input">
                       </div>
                   </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label" style="left: -15px;width: 100px">课程简介</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="synopsis"  placeholder="请输入课程简介" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
                   <label class="layui-form-label" style="width: 100px;left: -15px">课程类别</label>
                   <div class="layui-input-inline" style="margin-left: 10px">
                       <select id="cmbProvince" name="cmbProvince" class="form-control"></select>
@@ -118,13 +188,18 @@
                   <div class="layui-input-inline" style="margin-left: 20px">
                       <select id="cmbArea" name="cmbArea" class="form-control"></select>
                   </div>
-                  <div class="layui-upload" style="margin-top: 20px">
-                      <label class="layui-form-label" style="width: 100px;left: -15px">课程封面</label>
-                      <button type="button" class="layui-btn layui-btn-normal" id="test1" style="margin-left: 10px">选择文件</button>
+                  <div style="width:700px;padding:20px;">
+                      <input id="fileupload" class="fileupload" type="file" name="files" multiple="multiple">
+                      <div id="image">预览：</div>
+                      <!--<div id="dropzone" class="fade well">Drop files here</div>-->
+                      <button id="shangchuan" onclick="return false">上传</button>
+                      <div id="progress" class="progress" style="width: 180px;margin-top: 5px">
+                          <div class="bar" style="width: 0%;"></div>
+                      </div>
                   </div>
                   <div class="layui-form-item" style="margin-top: 50px">
                       <div class="layui-input-block">
-                          <input type="button" class="layui-btn" id="test2">
+                          <input type="button" class="layui-btn" id="test2" value="提交">
                           <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                       </div>
                   </div>
@@ -205,7 +280,9 @@
       </div><!--删除课时  李健-->
       <div id="details6" class="bodydetails" style="background-color: gold"></div><!--统计分析  郭-->
       <div id="details7" class="bodydetails" style="background-color: green"></div><!--订单分析  郭-->
-      <div id="details8" class="bodydetails" style="background-color: hotpink"></div><!--查看订单  孙瑞-->
+      <div id="details8" class="bodydetails" style="background-color: hotpink">
+
+      </div><!--查看订单  孙瑞-->
   </div>
   <div class="footer"></div>
 </body>
