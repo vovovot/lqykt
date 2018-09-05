@@ -28,6 +28,7 @@ $(function () {
         $("#yidenglu").text(user_name);
         $("#yidenglu").attr("title",user_name);
         $("#yidenglu").show();
+        $("#touxiang").children().attr("src","images/touxiang.jpg")
     }else {
         $("#news").attr("href","#")
         $("#news").click(function () {
@@ -122,6 +123,7 @@ function cancel() {
             layer.msg("注销成功！")
             $("#weidenglu").text('登录/注册');
             $("#weidenglu").attr("title",'登录/注册');
+            setTimeout(function(){window.location.reload();},2000);
         }
     })
 }
@@ -147,7 +149,7 @@ function denglu() {
                         document.cookie="expires="+time.toGMTString();
 
 
-
+                        setTimeout(function(){window.location.reload();},2000);
                     }
                     else{
                         layer.msg('登录失败',{time:1000});

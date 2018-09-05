@@ -71,6 +71,7 @@
                             var time=new Date();
                             time.setTime(time.getDate()+1);
                             document.cookie="expires="+time.toGMTString();
+                            setTimeout(function(){window.location.reload();},1000);
                         }
                     }
                 }

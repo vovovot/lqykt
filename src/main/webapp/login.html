@@ -112,7 +112,7 @@
                                     var layer = layui.layer;
                                     layer.msg('注册成功', {time: 1000});
                                 })
-                                    window.location.reload();
+                                    setTimeout(function(){window.location.reload();},1000);
                                 }else{
                                     layui.use('layer', function() {
                                         var layer = layui.layer;

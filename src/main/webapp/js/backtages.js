@@ -14,6 +14,7 @@ for(var i=0;i<arrCookie.length;i++){
     }
 }
 var cid;
+var cnm;
 $(function () {
     click();
     //biaodanyanzheng1();
@@ -185,16 +186,16 @@ function click() {
         $("#kind3 a").text("————");
     })
 
-    $(".active:eq(2)").click(function () {
-        $(".no3").toggle(300);
-        $(".no1").hide(300);
-        $(".no2").hide(300);
-        $(".no4").hide(300);
-        $("#kind2 a").text("统计分析");
-        $("#kind3 a").text("————");
-    })
+    // $(".active:eq(2)").click(function () {
+    //     $(".no3").toggle(300);
+    //     $(".no1").hide(300);
+    //     $(".no2").hide(300);
+    //     $(".no4").hide(300);
+    //     $("#kind2 a").text("统计分析");
+    //     $("#kind3 a").text("————");
+    // })
 
-    $(".active:eq(3)").click(function () {
+    $(".active:eq(2)").click(function () {
         $(".no4").toggle(300);
         $(".no1").hide(300);
         $(".no2").hide(300);
@@ -239,20 +240,20 @@ function click() {
 
     })
 
-    $(".no3:eq(0)").click(function () {
-        $("#kind2 a").text("统计分析");
-        $("#kind3 a").text("用户喜好");
-        $("#details6").siblings().hide();
-        $("#details6").show();
-
-    })
-    $(".no3:eq(1)").click(function () {
-        $("#kind2 a").text("统计分析");
-        $("#kind3 a").text("订单分析");
-        $("#details7").siblings().hide();
-        $("#details7").show();
-
-    })
+    // $(".no3:eq(0)").click(function () {
+    //     $("#kind2 a").text("统计分析");
+    //     $("#kind3 a").text("用户喜好");
+    //     $("#details6").siblings().hide();
+    //     $("#details6").show();
+    //
+    // })
+    // $(".no3:eq(1)").click(function () {
+    //     $("#kind2 a").text("统计分析");
+    //     $("#kind3 a").text("订单分析");
+    //     $("#details7").siblings().hide();
+    //     $("#details7").show();
+    //
+    // })
 
     $(".no4:eq(0)").click(function () {
         $("#kind2 a").text("订单管理");
@@ -409,6 +410,7 @@ function tjkc() {
                                 success:function (result) {
                                     layer.alert("添加课程成功！您的课程ID为："+result[0].course_id+",请牢记！！");
                                     cid = result[0].course_id;
+                                    cnm = "【"+result[0].course_name+"】课程更新了！";
                                 }
 
                             }
@@ -422,7 +424,7 @@ function tjkc() {
                                 async:false,
                                 data:{"userid":user_id,
                                     "courseid":cid,
-                                    "newsinfo":"【工作型PPT应该这样做】课程更新了！"},
+                                    "newsinfo":cnm},
                                 success:function () {
 
                                 }

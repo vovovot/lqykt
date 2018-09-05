@@ -224,13 +224,13 @@ function shownewsdialog(){
                             title:'推送',
                             skin: 'layui-layer-demo', //样式类名
                             closeBtn: 1, //不显示关闭按钮
-                            area: ['200px', '150px'],
+                            area: ['230px', '200px'],
                             offset:'rb',
                             anim: 2,
                             shade:0,
                             time:10000,
                             shadeClose: false, //开启遮罩关闭
-                            content: '<div style="width: 160px;height: 120px"><a href="goods.html?booksId='+result[0].course_id+'" id="newsdialog" name="'+result[0].news_id+'">'+result[0].news_info+'</a></div>'
+                            content: '<div style="width: 160px;height: 120px"><a href="goods.html?booksId='+result[0].course_id+'" id="newsdialog" name="'+result[0].news_id+'" style="font-size: 13px;line-height: 25px;">'+result[0].news_info+'</a></div>'
                         });
                     })
                 } 
@@ -282,7 +282,6 @@ layui.use('layer', function(){
             title:false,
             shadeClose:true,
             content:$("#regedit-body"),
-            time:13000,
         })
         return false;
     })
