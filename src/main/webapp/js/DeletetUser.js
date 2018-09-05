@@ -1,6 +1,6 @@
 $(function () {
     selectAll();
-    $("body").delegate(".delBtn", "click", function () {
+    $("body").delegate(".delBtn1", "click", function () {
         var id = $(this).parent().children("td").eq(0).text();
         console.log(id);
         $.ajax(
@@ -13,6 +13,7 @@ $(function () {
                 dataType:"text",
                 success:function (result) {
                    layer.msg("删除成功！",{time:1000})
+                    setTimeout(function(){window.location.reload();},1000);
                 }
             }
         )
@@ -41,7 +42,7 @@ function selectAll() {
                                 '                     <td>'+result[i].user_qq+'</td>\n' +
                                 '                     <td>'+result[i].user_sex+'</td>\n' +
                                 '                     <td>'+result[i].user_signature+'</td>\n' +
-                                '                     <td class="delBtn">删除</td>\n' +
+                                '                     <td class="delBtn1">删除</td>\n' +
                                 '                 </tr>');
                             $("#tab").after($s);
                         }

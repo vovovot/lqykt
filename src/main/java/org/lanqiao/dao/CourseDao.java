@@ -28,5 +28,5 @@ public interface CourseDao{
     public List<Course> selectid(Course c);
 
     public List<Course> selectCourse(Collect collect);
-
+    public List<Course> showCourseName(User user) ;
 }

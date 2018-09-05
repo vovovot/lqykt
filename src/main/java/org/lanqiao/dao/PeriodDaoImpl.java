@@ -6,8 +6,8 @@ import java.util.List;
 
 public class PeriodDaoImpl extends BaseDao<Period> implements PeriodDao{
     @Override
-    public int AddPeriod(int cid,int pid,String pname) {
-        return executeUpdate("insert into period(course_id,period_id,period_name) values(?,?,?);",new Object[]{cid,pid,pname});
+    public int AddPeriod(int cid,int pid,String pname,String address) {
+        return executeUpdate("insert into period(course_id,period_id,period_name,video_address) values(?,?,?,?);",new Object[]{cid,pid,pname,address});
     }
 
     @Override

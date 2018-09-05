@@ -67,9 +67,9 @@ function searchbut(){
             dataType:"json",
             success:function (result) {
                 if (result[0].kind_name == "全部课程") {
-                    $("#searchbutton").attr("href","specificClass.html?name=全部课程&type=0");
+                    $("#searchbutton").attr("href","allClass.html?name=全部课程&type=0");
                 }else {
-                    $("#searchbutton").attr("href","specificClass.html?name="+result[0].kind_name+"&type=3");
+                    $("#searchbutton").attr("href","specificClass.html?name=办公效率&type=2&name2=办公软件#");
                 }
             }
         }

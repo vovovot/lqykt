@@ -98,6 +98,11 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
         return executeQuery("select * from course where course_id in(select course_id from collect where user_id =?) ",
                 new Object[]{collect.getUser_id()});
     }
+    @Override
+    public List<Course> showCourseName(User user) {
+        return executeQuery("select course_name from course where course_id in" +
+                " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
+    }
 
 
 }

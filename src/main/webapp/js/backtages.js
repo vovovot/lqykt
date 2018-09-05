@@ -47,7 +47,7 @@ $(function () {
                     $(this).parent().remove();
                     location.reload();
                     showCourse();
-                    alert("success");
+                    alert("删除成功！！");
                 }else{
                     alert("error");
                 }
@@ -120,7 +120,7 @@ $(function () {
         })
     })
 
-    // 删除课程信息
+    // 删除课时信息
     $("body").delegate(".deBtnP", "click", function () {
         var id = $(this).parent().children("ul").children("li").eq(0).text();
         $.ajax({
@@ -136,7 +136,7 @@ $(function () {
                     //移除类名
                     $(this).parent().remove();
                     location.reload();
-                    alert("success");
+                    alert("删除成功！！");
                 }else{
                     alert("error");
                 }
@@ -156,6 +156,39 @@ $(function () {
             '              <div class="deBtnP"></div>\n' +
             '          </div>');
         return $period;
+    }
+
+    // 生成订单列表
+    $.ajax({
+        url: "http://localhost:8080/ShowUserOrder",
+        type: "post",
+        dataType: "json",
+        success: function (list) {
+            $.each(list, function (key, value) {
+                var $order = createOrder(value);
+                $("#details8").append($order);
+            })
+        },
+    })
+
+    // 展示订单信息
+    function createOrder(obj) {
+        console.log(obj.order_status);
+        var status;
+        if(obj.order_status == 1){
+            status = "交易成功";
+        }else{
+            status = "待支付";
+        }
+        var $order = $('<div class="courseInfo course">\n' +
+            '              <ul>\n' +
+            '                  <li class="info1 info2">'+obj.order_id+'</li>\n' +
+            '                  <li class="info2" style="margin-left: 50px;width: 150px" title="'+obj.order_time+'">'+obj.order_time+'</li>\n' +
+            '                  <li class="info2" style="margin-left: 45px">'+obj.price+'</li>\n' +
+            '                  <li class="info3" style="margin-left: 75px">'+status+'</li>\n' +
+            '              </ul>\n' +
+            '          </div>')
+        return $order;
     }
 
 })
@@ -505,6 +538,7 @@ function tjks() {
                 data:{"courseid":$("input[name='courseid']").val(),
                     "periodid":$("input[name='periodid']").val(),
                     "periodname":$("input[name='periodname']").val(),
+                    "address":"http://vjs.zencdn.net/v/oceans.mp4"
                 },
                 success:function (ret) {
                     if (ret == 1){

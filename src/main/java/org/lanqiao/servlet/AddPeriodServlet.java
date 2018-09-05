@@ -17,8 +17,9 @@ public class AddPeriodServlet extends HttpServlet {
         int cid = Integer.parseInt(request.getParameter("courseid"));
         int pid = Integer.parseInt(request.getParameter("periodid"));
         String pname = request.getParameter("periodname");
+        String address = request.getParameter("address");
         PeriodDao periodDao = new PeriodDaoImpl();
-        int ret = periodDao.AddPeriod(cid,pid,pname);
+        int ret = periodDao.AddPeriod(cid,pid,pname,address);
         PrintWriter out=response.getWriter();
         out.print(ret);
         out.flush();

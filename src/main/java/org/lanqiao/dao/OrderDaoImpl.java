@@ -17,11 +17,11 @@ public class OrderDaoImpl extends BaseDao<Order> implements OrderDao{
                 new Object[]{key});
     }
 
-    @Override
-    public List<Order> showCourseName(User user) {
-        return executeQuery("select course_name from course where course_id in" +
-                " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
-    }
+//    @Override
+//    public List<Order> showCourseName(User user) {
+//        return executeQuery("select course_name from course where course_id in" +
+//                " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
+//    }
     public int insertOrderInfo(Order order){
         return executeUpdate("insert into `order`(user_id,course_id) values(?,?)",new Object[]{order.getUser_id(),order.getCourse_id()});
     }

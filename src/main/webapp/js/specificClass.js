@@ -4,8 +4,13 @@ $(function () {
     $.addCookie("pageBegin", 1);
     
     // 首页后的一级节点
-    var li_name = UrlParm.parm("name");
+    var li_name = UrlParm.parm('name');
+    var type = UrlParm.parm('type');
+    var name2= UrlParm.parm('name2')
+    var name3 = UrlParm.parm('name3')
+    console.log(type);
     console.log(li_name);
+
     $(".arrow_next").text(li_name);
 
     // 设置二级节点
@@ -39,10 +44,10 @@ $(function () {
     })
 
     // 设置二级节点
-    $("ul").delegate(".flow_li", "click", function () {
+    $("ul").on("click",".flow_li",  function () {
+        console.log("fdf");
         var $nav_li = $(this).text();
         $(".arrow_next").text($nav_li);
-
         // 设置节点颜色
         // 移除所有类名
         $(this).parent().children("li").removeClass("nav_flow_li");
@@ -62,7 +67,7 @@ $(function () {
 
     })
     // 设置三级节点 点击动画
-    $("ul").delegate(".specific_li", "click", function () {
+    $("ul").on("click",".specific_li", function () {
         // 移除所有类名
         $(this).parent().children("li").removeClass("nav_li");
         // 添加类名
@@ -82,6 +87,14 @@ $(function () {
             $.getCookie("pageBegin"), pageSize);
 
     })
+
+    if(type == 2){
+        $("ul .flow_li").triggerHandler("click");
+        console.log(name2);
+    }else if(type == 3){
+        $(".name2").trigger("click");
+        $(".name3").trigger("click");
+    }
 
     // 分页
     // 点击上一页

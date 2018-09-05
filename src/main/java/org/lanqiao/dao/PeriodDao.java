@@ -5,7 +5,7 @@ import org.lanqiao.entity.Period;
 import java.util.List;
 
 public interface PeriodDao {
-    public int AddPeriod(int cid,int pid,String pname);
+    public int AddPeriod(int cid,int pid,String pname,String address);
     //删除
     public int delete(Period p);
     //查询

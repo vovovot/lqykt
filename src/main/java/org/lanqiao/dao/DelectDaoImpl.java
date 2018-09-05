@@ -8,7 +8,7 @@ import java.util.List;
 public class DelectDaoImpl extends BaseDao<User> implements DelectDao {
     public List<User> selectAll( )
     {
-        return executeQuery("select user_id, user_name from user");
+        return executeQuery("select * from user");
     }
     public int delectuser(User u)
     {

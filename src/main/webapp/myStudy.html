@@ -7,14 +7,29 @@
     <link rel="stylesheet" href="css/base01.css" type="text/css">
     <link rel="stylesheet" href="css/general.css" type="text/css">
     <link rel="stylesheet" href="css/regedit.css" type="text/css">
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
     <meta charset="UTF-8">
     <title>个人认证-主页-蓝桥云课堂</title>
     <script>
         $(function () {
-            var id = document.cookie("user_id");
+
+//获取cookie字符串
+            var strCookie=document.cookie;
+//将多cookie切割为多个名/值对
+            var arrCookie=strCookie.split("; ");
+            var user_id;
+//遍历cookie数组，处理每个cookie对
+            for(var i=0;i<arrCookie.length;i++){
+                var arr=arrCookie[i].split("=");
+                //找到名称为userId的cookie，并返回它的值
+                if("user_id"==arr[0]){
+                    user_id=arr[1];
+                    break;
+                }
+            }
             $.ajax({
                 url:"/showCourseNameServlet",
-                data:{"user_id":id},
+                data:{"user_id":user_id},
                 dataType:"json",
                 success:function (ret) {
                     for(var i =0 ; i<ret.length;i++){
@@ -42,7 +57,7 @@
     </style>
 </head>
 <body>
-<script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+
 <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
 <script src="layui/layui.js " type="application/javascript"></script>
 <script src="js/general.js" type="application/javascript"></script>
@@ -170,16 +185,16 @@
 </div>
 <div id="user-box" class="linear">
     <div class="user_info">
-        <div class="user_images">
-            <img src="images/头像.jpg" alt="">
-        </div>
-        <div class="user_bottom">
-            <div class="user_bottom_name">
-                橡皮ca
-            </div>
-            <div class="user_info_fix">
-                <span >&nbsp;&nbsp; 好好学习 天天向上</span>
-            </div>
+        <!--<div class="user_images">-->
+            <!--<img src="images/头像.JPG" alt="">-->
+        <!--</div>-->
+        <!--<div class="user_bottom">-->
+            <!--<div class="user_bottom_name">-->
+
+
+            <!--<div class="user_info_fix">-->
+                <!--<span >&nbsp;&nbsp; 好好学习 天天向上</span>-->
+            <!--</div>-->
         </div>
     </div>
 
@@ -189,9 +204,8 @@
         <li>  <marquee > 知识是一种快乐，而好奇则是知识的萌芽~~</marquee>
             <font size="40px">已购课程</font>
         </li>
-
-
     </ul>
+
 </div>
 <div class="course">
     <div class="course_name">

@@ -16,5 +16,5 @@ public interface OrderDao {
     //查询
     public List<Order> select(String key) ;
 
-    List<Order> showCourseName(User user);
+    //List<Order> showCourseName(User user);
 }

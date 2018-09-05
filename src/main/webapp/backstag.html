@@ -17,7 +17,7 @@
     <script src="js/jquery.validate.js" type="application/javascript"></script>
     <script src="js/jsAddress.js" type="application/javascript"></script>
     <script src="js/backtages.js" type="application/javascript"></script>
-    <script src="css/backtages.css" type="application/javascript"></script>
+    <!--<script src="css/backtages.css" type="application/javascript"></script>-->
     <script src="js/DeletetUser.js" type="application/javascript"></script>
     <script src="js/jquery.ui.widget.js"></script>
     <script src="js/jquery.iframe-transport.js"></script>
@@ -192,10 +192,6 @@
                       <input id="fileupload" class="fileupload" type="file" name="files" multiple="multiple">
                       <div id="image">预览：</div>
                       <!--<div id="dropzone" class="fade well">Drop files here</div>-->
-                      <button id="shangchuan" onclick="return false">上传</button>
-                      <div id="progress" class="progress" style="width: 180px;margin-top: 5px">
-                          <div class="bar" style="width: 0%;"></div>
-                      </div>
                   </div>
                   <div class="layui-form-item" style="margin-top: 50px">
                       <div class="layui-input-block">
@@ -243,10 +239,11 @@
                       <input type="text" name="periodname"  placeholder="请输入课时名/汉字或英文" autocomplete="off" class="layui-input">
                   </div>
               </div>
-              <!--<div class="layui-form-item">-->
-                  <!--<label class="layui-form-label" style="width: 100px;left: -15px">课时视频</label>-->
-                  <!--<button type="button" class="layui-btn" id="test5" style="margin-left: 10px"><i class="layui-icon"></i>上传视频</button>-->
-              <!--</div>-->
+              <div style="width:700px;padding:20px;">
+                  <input id="fileupload1" class="fileupload" type="file" name="files" multiple="multiple">
+                  <div id="image1">预览：</div>
+                  <!--<div id="dropzone" class="fade well">Drop files here</div>-->
+              </div>
 
               <div class="layui-form-item">
                   <div class="layui-input-block">
@@ -280,8 +277,15 @@
       </div><!--删除课时  李健-->
       <div id="details6" class="bodydetails" style="background-color: white"></div><!--统计分析  郭-->
       <div id="details7" class="bodydetails" style="background-color: white"></div><!--订单分析  郭-->
-      <div id="details8" class="bodydetails" style="background-color: hotpink">
-
+      <div id="details8" class="bodydetails" style="background-color: white">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">订单号<li>
+                  <li class="info2">订单时间<li>
+                  <li class="info2">价格<li>
+                  <li class="info3">交易状态<li>
+              </ul>
+          </div>
       </div><!--查看订单  孙瑞-->
   </div>
   <div class="footer"></div>
