@@ -13,22 +13,26 @@ $(function () {
     //将多cookie切割为多个名/值对
     var arrCookie = strCookie.split("; ");
     var user_name;
+    var user_pic;
     //遍历cookie数组，处理每个cookie对
     for (var i = 0; i < arrCookie.length; i++) {
         var arr = arrCookie[i].split("=");
         //找到名称为userId的cookie，并返回它的值
         if ("user_name" == arr[0]) {
             user_name = arr[1];
-            break;
+        }
+        if ("user_pic" == arr[0]) {
+            user_pic = arr[1];
         }
     }
+
     $("#yidenglu").hide();
     if (user_name!=null){
         $("#weidenglu").hide();
         $("#yidenglu").text(user_name);
         $("#yidenglu").attr("title",user_name);
         $("#yidenglu").show();
-        $("#touxiang").children().attr("src","images/touxiang.jpg")
+        $("#touxiang").children().attr("src",user_pic)
     }else {
         $("#news").attr("href","#")
         $("#news").click(function () {
@@ -147,7 +151,8 @@ function denglu() {
                         var time=new Date();
                         time.setTime(time.getDate()+1);
                         document.cookie="expires="+time.toGMTString();
-
+                        var photo = result[0].user_picaddress;
+                        document.cookie="user_pic="+photo;
 
                         setTimeout(function(){window.location.reload();},2000);
                     }

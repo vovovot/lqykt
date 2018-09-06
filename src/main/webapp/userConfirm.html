@@ -45,21 +45,23 @@
                     'user_name':  $("input[name='nickname']").val(),
                 'user_sex':$("input[name='sex']") .val(),
                 'user_qq':$("input[name='qqhao']").val(),
-                'user_picaddress': $("input[name='headimg']").val(),
+                // 'user_picaddress': $("input[name='headimg']").val(),
                 'user_signature': $("textarea[name='desc']").val(),
                 'user_id': user_id,
                 },
                 success: function (ret) {
                     if (ret == 1) {
+                        var photo1 = "images/touxiang.jpg"
+                        document.cookie="user_pic="+photo1;
                         layer.msg('保存成功', {icon: 1, time: 1000});
                         setTimeout(function () {
                             window.location.reload();
-                        }, 1300)
+                        }, 1000)
                     } else {
                         layer.msg('保存失败', {time: 1000});
                         setTimeout(function () {
                             window.location.reload();
-                        }, 1300)
+                        }, 1000)
                     }
                 }
             })
@@ -338,6 +340,13 @@
             <div class="layui-input-block">
                 <input name="sex" value=""placeholder="输入男性or女性" >
             </div>
+        </div>
+
+
+        <div style="width:700px;padding:20px;">
+            <input id="fileupload" class="fileupload" type="file" name="files" multiple="multiple">
+            <div id="image">预览：</div>
+            <!--<div id="dropzone" class="fade well">Drop files here</div>-->
         </div>
 
         <!--<div class="file-box">-->
