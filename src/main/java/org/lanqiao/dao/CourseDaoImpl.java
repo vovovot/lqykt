@@ -13,12 +13,12 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
 
     @Override
     public List<Course> ShowFreeCourse() {
-        return executeQuery("select course_id,course_name,company,page_view from course where price = 0 order by page_view desc");
+        return executeQuery("select course_id,course_name,company,page_view,cover from course where price = 0 order by page_view desc");
     }
 
     @Override
     public List<Course> ShowNewCourse() {
-        return executeQuery("select course_id,course_name,company,page_view from course order by putway_time desc");
+        return executeQuery("select course_id,course_name,company,page_view,cover from course order by putway_time desc");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class CourseDaoImpl extends BaseDao<Course> implements  CourseDao{
     }
     @Override
     public List<Course> showCourseName(User user) {
-        return executeQuery("select course_name from course where course_id in" +
+        return executeQuery("select course_name , cover from course where course_id in" +
                 " (select course_id from `order` where user_id=?)", new Object[]{user.getUser_id()});
     }
 

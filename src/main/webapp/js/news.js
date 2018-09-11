@@ -64,7 +64,7 @@ function shownewsinfo() {
                 }
                 for (var t=0;t<result.length-1;t++){
                     $(".cheng:eq(0)").before('<div class="news-details">\n' +
-                        '                        <a href="goods.html?booksId='+result[t].course_id+'" class="news-details-a'+result[t].news_status+'" name="'+result[t].news_id+'">'+result[t].news_info+'</a>\n' +
+                        '                        <a href="goods.html?booksId=96" class="news-details-a'+result[t].news_status+'" name="'+result[t].news_id+'">'+result[t].news_info+'</a>\n' +
                         '                        <span>'+result[t].news_time+'</span>\n' +
                         '                    </div>')
                 }

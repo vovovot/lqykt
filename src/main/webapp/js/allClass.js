@@ -3,7 +3,7 @@ $(function () {
     for(var i=0; i<arr.length; i++){
         // 课程显示
         $.ajax({
-            url: "http://47.94.194.28:8080/ShowAllCourse",
+            url: "/ShowAllCourse",
             method: "post",
             data: {
                 "two_name": arr[i]
@@ -34,9 +34,9 @@ $(function () {
 
     // 创建节点 -- 课程块
     function createCourse(obj) {
-        var $course = $('<a href="http://47.94.194.28:8080/goods.html?booksId='+obj.course_id+'" target="_self">\n' +
+        var $course = $('<a href="/goods.html?booksId='+obj.course_id+'" target="_self">\n' +
             '            <div class="class">\n' +
-            '                <div class="classImg"><img src="images/classImg1.png" width="223"></div>\n' +
+            '                <div class="classImg"><img src="'+obj.cover+'" width="223"></div>\n' +
             '                <div class="classTit">'+obj.course_name+'</div>\n' +
             '                <div class="classTea">'+obj.company+'</div>\n' +
             '                <div class="classEval">'+obj.page_view+'人观看</div>\n' +

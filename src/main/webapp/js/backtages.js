@@ -35,7 +35,7 @@ $(function () {
         // 获取课程名
         var courseId = $(this).parent().children("ul").children("li").eq(0).text();
         $.ajax({
-            url: "http://localhost:8080/DelCourse",
+            url: "/DelCourse",
             type: "post",
             data: {
                 "courseId": courseId
@@ -44,10 +44,9 @@ $(function () {
             success: function (msg) {
                 if(msg == 1){
                     //移除类名
-                    $(this).parent().remove();
-                    location.reload();
-                    showCourse();
+                    // $(this).parent().remove();
                     alert("删除成功！！");
+                    showCourse();
                 }else{
                     alert("error");
                 }
@@ -60,7 +59,7 @@ $(function () {
         for(var i=0; i<arr.length; i++){
             // 课程显示
             $.ajax({
-                url: "http://localhost:8080/ShowAllCourse",
+                url: "/ShowAllCourse",
                 method: "post",
                 data: {
                     "two_name": arr[i]
@@ -102,7 +101,7 @@ $(function () {
         var courseId = $(".inputTxt").val();
         // 课时显示
         $.ajax({
-            url: "http://localhost:8080/ShowPeriod",
+            url: "/ShowPeriod",
             method: "post",
             data: {
                 "courseId": courseId
@@ -124,7 +123,7 @@ $(function () {
     $("body").delegate(".deBtnP", "click", function () {
         var id = $(this).parent().children("ul").children("li").eq(0).text();
         $.ajax({
-            url: "http://localhost:8080/DelPeriod",
+            url: "/DelPeriod",
             type: "post",
             data: {
                 "id": id
@@ -134,8 +133,7 @@ $(function () {
                 console.log(msg);
                 if(msg == 1){
                     //移除类名
-                    $(this).parent().remove();
-                    location.reload();
+                    // $(this).parent().remove();
                     alert("删除成功！！");
                 }else{
                     alert("error");
@@ -160,7 +158,7 @@ $(function () {
 
     // 生成订单列表
     $.ajax({
-        url: "http://localhost:8080/ShowUserOrder",
+        url: "/ShowUserOrder",
         type: "post",
         dataType: "json",
         success: function (list) {
@@ -418,7 +416,7 @@ function tjkc() {
                 }
             }
         )
-        var kid =40;
+        var kid =96;
         $.ajax(
             {
                 url:"/AddCourseServlet",
@@ -429,7 +427,7 @@ function tjkc() {
                     "company":$("input[name='company']").val(),
                     "price":$("input[name='price']").val(),
                     "synopsis":$("input[name='synopsis']").val(),
-                    "cover":"E:/idea/IntelliJ IDEA 2018.2/lqykt/target/lqykt/upload/classImg1.png",
+                    "cover":"images/nodecover.png",
                     "kindid":kid,
                 },
                 success:function (ret) {
@@ -441,7 +439,7 @@ function tjkc() {
                                 dataType:"json",
                                 async:false,
                                 success:function (result) {
-                                    layer.alert("添加课程成功！您的课程ID为："+result[0].course_id+",请牢记！！");
+                                    layer.alert("添加课程成功！您的课程ID为：96 ,请牢记！！");
                                     cid = result[0].course_id;
                                     cnm = "【"+result[0].course_name+"】课程更新了！";
                                 }

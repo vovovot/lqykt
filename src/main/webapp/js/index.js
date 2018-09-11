@@ -32,27 +32,31 @@ $(function () {
             type:"post",
             dataType:"json",
             success:function (result) {
-                // $(".body-showinfo-jxhk:eq(0)").children().eq(0).children().attr("src",result[0].cover)
+                $(".body-showinfo-jxhk:eq(0)").children().eq(0).children().attr("src",result[0].cover);
                 $(".body-showinfo-jxhk:eq(0)").attr("title",result[0].course_name);
                 $(".body-showinfo-jxhk:eq(0)").children("p").text(result[0].course_name);
                 $(".body-showinfo-jxhk:eq(0)").children("span").text(result[0].company);
                 $(".body-showinfo-jxhk:eq(0)").children("ul").children().eq(0).text(result[0].page_view);
                 $(".body-showinfo-jxhk:eq(0)").parent().attr("href","goods.html?booksId="+result[0].course_id);
+                $(".body-showinfo-jxhk:eq(1)").children().eq(0).children().attr("src",result[1].cover);
                 $(".body-showinfo-jxhk:eq(1)").attr("title",result[1].course_name);
                 $(".body-showinfo-jxhk:eq(1)").children("p").text(result[1].course_name);
                 $(".body-showinfo-jxhk:eq(1)").children("span").text(result[1].company);
                 $(".body-showinfo-jxhk:eq(1)").children("ul").children().eq(0).text(result[1].page_view);
                 $(".body-showinfo-jxhk:eq(1)").parent().attr("href","goods.html?booksId="+result[1].course_id);
+                $(".body-showinfo-jxhk:eq(2)").children().eq(0).children().attr("src",result[2].cover);
                 $(".body-showinfo-jxhk:eq(2)").attr("title",result[2].course_name);
                 $(".body-showinfo-jxhk:eq(2)").children("p").text(result[2].course_name);
                 $(".body-showinfo-jxhk:eq(2)").children("span").text(result[2].company);
                 $(".body-showinfo-jxhk:eq(2)").children("ul").children().eq(0).text(result[2].page_view);
                 $(".body-showinfo-jxhk:eq(2)").parent().attr("href","goods.html?booksId="+result[2].course_id);
+                $(".body-showinfo-jxhk:eq(3)").children().eq(0).children().attr("src",result[3].cover);
                 $(".body-showinfo-jxhk:eq(3)").attr("title",result[3].course_name);
                 $(".body-showinfo-jxhk:eq(3)").children("p").text(result[3].course_name);
                 $(".body-showinfo-jxhk:eq(3)").children("span").text(result[3].company);
                 $(".body-showinfo-jxhk:eq(3)").children("ul").children().eq(0).text(result[3].page_view);
                 $(".body-showinfo-jxhk:eq(3)").parent().attr("href","goods.html?booksId="+result[3].course_id);
+                $(".body-showinfo-jxhk:eq(4)").children().eq(0).children().attr("src",result[4].cover);
                 $(".body-showinfo-jxhk:eq(4)").attr("title",result[4].course_name);
                 $(".body-showinfo-jxhk:eq(4)").children("p").text(result[4].course_name);
                 $(".body-showinfo-jxhk:eq(4)").children("span").text(result[4].company);
@@ -68,26 +72,31 @@ $(function () {
             type: "post",
             dataType: "json",
             success: function (result) {
+                $(".body-showinfo-mfkc:eq(0)").children().eq(0).children().attr("src",result[0].cover);
                 $(".body-showinfo-mfkc:eq(0)").attr("title",result[0].course_name);
                 $(".body-showinfo-mfkc:eq(0)").children("p").text(result[0].course_name);
                 $(".body-showinfo-mfkc:eq(0)").children("span").text(result[0].company);
                 $(".body-showinfo-mfkc:eq(0)").children("ul").children().eq(0).text(result[0].page_view);
                 $(".body-showinfo-mfkc:eq(0)").parent().attr("href","goods.html?booksId="+result[0].course_id);
+                $(".body-showinfo-mfkc:eq(1)").children().eq(0).children().attr("src",result[1].cover);
                 $(".body-showinfo-mfkc:eq(1)").attr("title",result[1].course_name);
                 $(".body-showinfo-mfkc:eq(1)").children("p").text(result[1].course_name);
                 $(".body-showinfo-mfkc:eq(1)").children("span").text(result[1].company);
                 $(".body-showinfo-mfkc:eq(1)").children("ul").children().eq(0).text(result[1].page_view);
                 $(".body-showinfo-mfkc:eq(1)").parent().attr("href","goods.html?booksId="+result[1].course_id);
+                $(".body-showinfo-mfkc:eq(2)").children().eq(0).children().attr("src",result[2].cover);
                 $(".body-showinfo-mfkc:eq(2)").attr("title",result[2].course_name);
                 $(".body-showinfo-mfkc:eq(2)").children("p").text(result[2].course_name);
                 $(".body-showinfo-mfkc:eq(2)").children("span").text(result[2].company);
                 $(".body-showinfo-mfkc:eq(2)").children("ul").children().eq(0).text(result[2].page_view);
                 $(".body-showinfo-mfkc:eq(2)").parent().attr("href","goods.html?booksId="+result[2].course_id);
+                $(".body-showinfo-mfkc:eq(3)").children().eq(0).children().attr("src",result[3].cover);
                 $(".body-showinfo-mfkc:eq(3)").attr("title",result[3].course_name);
                 $(".body-showinfo-mfkc:eq(3)").children("p").text(result[3].course_name);
                 $(".body-showinfo-mfkc:eq(3)").children("span").text(result[3].company);
                 $(".body-showinfo-mfkc:eq(3)").children("ul").children().eq(0).text(result[3].page_view);
                 $(".body-showinfo-mfkc:eq(3)").parent().attr("href","goods.html?booksId="+result[3].course_id);
+                $(".body-showinfo-mfkc:eq(4)").children().eq(0).children().attr("src",result[4].cover);
                 $(".body-showinfo-mfkc:eq(4)").attr("title",result[4].course_name);
                 $(".body-showinfo-mfkc:eq(4)").children("p").text(result[4].course_name);
                 $(".body-showinfo-mfkc:eq(4)").children("span").text(result[4].company);
@@ -103,26 +112,31 @@ $(function () {
             type: "post",
             dataType: "json",
             success: function (result) {
+                $(".body-showinfo-zxkc:eq(0)").children().eq(0).children().attr("src",result[0].cover);
                 $(".body-showinfo-zxkc:eq(0)").attr("title",result[0].course_name);
                 $(".body-showinfo-zxkc:eq(0)").children("p").text(result[0].course_name);
                 $(".body-showinfo-zxkc:eq(0)").children("span").text(result[0].company);
                 $(".body-showinfo-zxkc:eq(0)").children("ul").children().eq(0).text(result[0].page_view);
                 $(".body-showinfo-zxkc:eq(0)").parent().attr("href","goods.html?booksId="+result[0].course_id);
+                $(".body-showinfo-zxkc:eq(1)").children().eq(0).children().attr("src",result[1].cover);
                 $(".body-showinfo-zxkc:eq(1)").attr("title",result[1].course_name);
                 $(".body-showinfo-zxkc:eq(1)").children("p").text(result[1].course_name);
                 $(".body-showinfo-zxkc:eq(1)").children("span").text(result[1].company);
                 $(".body-showinfo-zxkc:eq(1)").children("ul").children().eq(0).text(result[1].page_view);
                 $(".body-showinfo-zxkc:eq(1)").parent().attr("href","goods.html?booksId="+result[1].course_id);
+                $(".body-showinfo-zxkc:eq(2)").children().eq(0).children().attr("src",result[2].cover);
                 $(".body-showinfo-zxkc:eq(2)").attr("title",result[2].course_name);
                 $(".body-showinfo-zxkc:eq(2)").children("p").text(result[2].course_name);
                 $(".body-showinfo-zxkc:eq(2)").children("span").text(result[2].company);
                 $(".body-showinfo-zxkc:eq(2)").children("ul").children().eq(0).text(result[2].page_view);
                 $(".body-showinfo-zxkc:eq(2)").parent().attr("href","goods.html?booksId="+result[2].course_id);
+                $(".body-showinfo-zxkc:eq(3)").children().eq(0).children().attr("src",result[3].cover);
                 $(".body-showinfo-zxkc:eq(3)").attr("title",result[3].course_name);
                 $(".body-showinfo-zxkc:eq(3)").children("p").text(result[3].course_name);
                 $(".body-showinfo-zxkc:eq(3)").children("span").text(result[3].company);
                 $(".body-showinfo-zxkc:eq(3)").children("ul").children().eq(0).text(result[3].page_view);
                 $(".body-showinfo-zxkc:eq(3)").parent().attr("href","goods.html?booksId="+result[3].course_id);
+                $(".body-showinfo-zxkc:eq(4)").children().eq(0).children().attr("src",result[4].cover);
                 $(".body-showinfo-zxkc:eq(4)").attr("title",result[4].course_name);
                 $(".body-showinfo-zxkc:eq(4)").children("p").text(result[4].course_name);
                 $(".body-showinfo-zxkc:eq(4)").children("span").text(result[4].company);

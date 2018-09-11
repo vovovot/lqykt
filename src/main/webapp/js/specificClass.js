@@ -15,7 +15,7 @@ $(function () {
 
     // 设置二级节点
     $.ajax({
-        url: "http://47.94.194.28:8080/ShowKind",
+        url: "/ShowKind",
         method: "post",
         data: {
             "name": li_name
@@ -30,7 +30,7 @@ $(function () {
                 ajax_three(value.kind_name);
                 
                 // 获取课程信息
-                ajax_ShowCourse(value.kind_name, "http://47.94.194.28:8080/ShowCourse", 1, 1);
+                ajax_ShowCourse(value.kind_name, "/ShowCourse", 1, 1);
             })
         },
         error: function (xml) {
@@ -63,7 +63,7 @@ $(function () {
         // 删除所有课程信息
         $(".classAll").children().remove();
         // 获取课程信息
-        ajax_ShowCourse($nav_li, "http://47.94.194.28:8080/ShowCourse", 1, 1);
+        ajax_ShowCourse($nav_li, "/ShowCourse", 1, 1);
 
     })
     // 设置三级节点 点击动画
@@ -78,12 +78,12 @@ $(function () {
         // 保存课程名
         $.addCookie("courseName", name);
         // 保存网址
-        $.addCookie("str_url", "http://47.94.194.28:8080/ShowSignleCourse");
+        $.addCookie("str_url", "/ShowSignleCourse");
         
         // 删除所有课程信息
         $(".classAll").children().remove();
         // 获取课程信息
-        ajax_ShowCourse(name, "http://47.94.194.28:8080/ShowSignleCourse",
+        ajax_ShowCourse(name, "/ShowSignleCourse",
             $.getCookie("pageBegin"), pageSize);
 
     })
@@ -131,7 +131,7 @@ $(function () {
     // 设置三级节点
     function ajax_three(name) {
         $.ajax({
-            url: "http://47.94.194.28:8080/ShowKind",
+            url: "/ShowKind",
             method: "post",
             data: {
                 "name": name
@@ -187,9 +187,9 @@ $(function () {
 
     // 创建节点 -- 课程块
     function createCourse(obj) {
-        var $course = $('<a href="http://47.94.194.28:8080/goods.html?booksId='+obj.course_id+'" target="_self">\n' +
+        var $course = $('<a href="/goods.html?booksId='+obj.course_id+'" target="_self">\n' +
             '            <div class="class">\n' +
-            '                <div class="classImg"><img src="images/classImg1.png" width="223"></div>\n' +
+            '                <div class="classImg"><img src="'+obj.cover+'" width="223"></div>\n' +
             '                <div class="classTit">'+obj.course_name+'</div>\n' +
             '                <div class="classTea">'+obj.company+'</div>\n' +
             '                <div class="classEval">'+obj.page_view+'人学习</div>\n' +

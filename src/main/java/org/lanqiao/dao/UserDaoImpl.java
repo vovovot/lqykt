@@ -12,7 +12,7 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
         return executeQuery("select * from user where user_phone=? and user_pwd=?", new Object[]{user.getUser_phone(), user.getUser_pwd()});
     }
     public int addUser(User user) {
-        return executeUpdate("insert into user(user_phone,user_pwd,user_name) values(?,?,?)", new Object[]{user.getUser_phone(), user.getUser_pwd(),"lanqiao"+user.getUser_phone()});
+        return executeUpdate("insert into user(user_phone,user_pwd,user_name,user_picaddress) values(?,?,?,'images/small.jpg')", new Object[]{user.getUser_phone(), user.getUser_pwd(),"lanqiao"+user.getUser_phone()});
     }
     public List<User> select(User user)
     {

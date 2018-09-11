@@ -1,19 +1,23 @@
 $(function () {
     selectAll();
     $("body").delegate(".delBtn1", "click", function () {
-        var id = $(this).parent().children("td").eq(0).text();
+        var id = $(this).parent().parent().children("td").eq(0).text();
         console.log(id);
         $.ajax(
             {
-                url:"http://localhost:8080/DelServlet",
+                url:"/DelServlet",
                 type:"post",
                 data:{
                     "user_id": id
                 },
                 dataType:"text",
                 success:function (result) {
-                   layer.msg("删除成功！",{time:1000})
-                    setTimeout(function(){window.location.reload();},1000);
+                    if (result == 1){
+                        layer.msg("删除成功！",{time:1000})
+                        setTimeout(function(){window.location.reload();},1000);
+                    } else {
+                        layer.msg("删除失败！！")
+                    }
                 }
             }
         )
@@ -21,7 +25,6 @@ $(function () {
 
 })
 function selectAll() {
-    $("#deleteuser").click(function () {
         $.ajax(
             {
                 url:"/ShowAllServlet",
@@ -42,7 +45,7 @@ function selectAll() {
                                 '                     <td>'+result[i].user_qq+'</td>\n' +
                                 '                     <td>'+result[i].user_sex+'</td>\n' +
                                 '                     <td>'+result[i].user_signature+'</td>\n' +
-                                '                     <td class="delBtn1">删除</td>\n' +
+                                '                     <td><a href="#" class="delBtn1">删除</a></td>\n' +
                                 '                 </tr>');
                             $("#tab").after($s);
                         }
@@ -51,5 +54,4 @@ function selectAll() {
                 }
             }
         )
-    })
 }

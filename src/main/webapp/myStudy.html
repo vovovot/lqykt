@@ -34,7 +34,7 @@
                 success:function (ret) {
                     for(var i =0 ; i<ret.length;i++){
                     $node=$('<div class="course_name">\n' +
-                            '    <div class="img_p"><img src="images/courseimg.jpg" alt="" width="200px"></div>\n' +
+                            '    <div class="img_p"><img src="'+ret[i].cover+'" alt="" width="200px"></div>\n' +
                             '    <div><a href="" name ="course_name" class="course_n"> '+ret[i].course_name+'</a></div>\n' +
                             '</div>\n');
                         $(".course").append($node);
@@ -109,7 +109,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <button class="layui-btn layui-btn-primary" onclick="window.location.href='myorder.html'">我的订单</button>
+                <button class="layui-btn layui-btn-primary" onclick="window.location.href='myOrder.html'">我的订单</button>
                 <br><br>
                 <button class="layui-btn layui-btn-danger" id="calcel">注销</button>
             </div>
@@ -209,8 +209,8 @@
 </div>
 <div class="course">
     <div class="course_name">
-        <div class="img_p"><img src="images/courseimg.jpg" alt="" width="200px"></div>
-        <div><a href="" name ="course_name" class="course_n"> 工作型PPT应该这样做</a></div>
+        <div class="img_p"><img src="images/aaa.jpg" alt="" width="200px"></div>
+        <div><a href="goods.html?booksId=1" name ="course_name" class="course_n"> 工作型PPT应该这样做</a></div>
     </div>
 
 </div>
